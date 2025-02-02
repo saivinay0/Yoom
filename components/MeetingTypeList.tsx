@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import HomeCard from "./HomeCard";
 import { useRouter } from "next/navigation";
 import MeetingModel from "./MeetingModel";
-import { useStreamVideoClient } from "@stream-io/video-react-sdk";
+import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useUser } from "@clerk/nextjs";
 import { useToast } from "@/hooks/use-toast";
 
@@ -20,6 +20,7 @@ const MeetingTypeList = () => {
   >(undefined);
 
   const [values, setValues] = useState(initialValues);
+  const [callDetail, setCallDetail] = useState<Call>();
 
   const client = useStreamVideoClient();
   const { user } = useUser();
@@ -86,7 +87,7 @@ const MeetingTypeList = () => {
         handleClick={() => router.push("/recordings")}
       />
       <MeetingModel
-        isOpen={meetingState === "isScheduleMeeting"}
+        isOpen={meetingState === "isInstantMeeting"}
         onClose={() => setMeetingState(undefined)}
         title="Create Meeting"
         buttonText="Start Meeting"
