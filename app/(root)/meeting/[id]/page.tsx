@@ -9,7 +9,7 @@ import Loader from "@/components/Loader";
 import MeetingSetup from "@/components/MeetingSetup";
 import MeetingRoom from "@/components/MeetingRoom";
 import Alert from "@/components/Alert";
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Meeting = ({ params }: { params: { id: string } }) => {
   const { id } = useParams();
   const { isLoaded, user } = useUser();
