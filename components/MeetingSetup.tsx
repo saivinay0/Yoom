@@ -36,12 +36,17 @@ const MeetingSetup = ({
 
   useEffect(() => {
     if (isMicCamToggled) {
-      call.camera.disable();
-      call.microphone.disable();
+      call?.camera.disable();
+      call?.microphone.disable();
     } else {
-      call.camera.enable();
-      call.microphone.enable();
+      call?.camera.enable();
+      call?.microphone.enable();
     }
+
+    return () => {
+      call?.camera.disable();
+      call?.microphone.disable();
+    };
   }, [isMicCamToggled, call.camera, call.microphone]);
 
   if (callTimeNotArrived)
