@@ -1,17 +1,22 @@
 import MeetingTypeList from "@/components/MeetingTypeList";
 
 const Home = () => {
+  // Get the current UTC time and convert it to IST (UTC+5:30)
   const now = new Date();
+  const istNow = new Date(
+    now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+  );
 
-  const time = now.toLocaleTimeString("en-US", {
+  const time = istNow.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
-    timeZone: "Asia/Kolkata",
   });
-  const date = new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(
-    now
-  );
+
+  const date = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "full",
+    timeZone: "Asia/Kolkata",
+  }).format(istNow);
 
   return (
     <section className="flex size-full flex-col gap-5 text-white">
